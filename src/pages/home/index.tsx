@@ -19,10 +19,10 @@ export const Home = () => {
         />
       </div>
 
-      <ul className="grid grid-cols-3 gap-2 text-xl w-4/5 text-center">
+      <ul className="grid grid-cols-2 gap-2 text-xl w-4/5 text-center xs:grid-cols-3 md:max-w-80 lg:max-w-96">
         {cities.map(city => {
           return(
-            <li key={city}>
+            <li className="duration-300 hover:scale-125" key={city}>
               <Link to={`/weather/${city}`}>{city}</Link>
             </li>
           )

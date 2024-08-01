@@ -1,6 +1,7 @@
 import { Condition } from "./condition";
 
 export interface ForecastHour {
+  [x: string]: any;
   time_epoch: number;
   time: string;
   temp_c: number;
