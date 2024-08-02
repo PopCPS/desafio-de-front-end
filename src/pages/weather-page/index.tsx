@@ -73,7 +73,7 @@ export const CityWeather = () => {
   }, [city])  
 
   return (
-    <div onClick={()=>{console.log()}} className="flex flex-col items-center justify-between h-screen font-extraligh text-zinc-950 bg-gradient-to-t from-sky-500 to-sky-300 dark:text-zinc-50 dark:from-slate-950 dark:to-blue-950">
+    <div className="flex flex-col items-center justify-between h-screen font-extraligh text-zinc-950 bg-gradient-to-t from-sky-500 to-sky-300 dark:text-zinc-50 dark:from-slate-950 dark:to-blue-950">
       <div className="flex self-start md:self-auto md:w-80 xl:w-[450px]">
         <button className="self-start p-3 duration-300 hover:scale-125">
           <Link to={'/'}>
@@ -82,10 +82,10 @@ export const CityWeather = () => {
         </button>
       </div>
       {!loading ? (
-        <div className="flex flex-col items-center justify-between flex-1 p-2">
+        <div className="flex flex-col items-center justify-between flex-1 p-2 md:justify-around">
     
           {currentWeather && locationInfo && forecastToday ? (
-            <div data-testid='main-content' className="flex flex-col gap-4 select-none cursor-pointer">
+            <div data-testid='main-content' className="flex flex-col items-center gap-4 select-none cursor-pointer">
               <div className="flex flex-col items-center">
                 <h1 className="text-5xl">{locationInfo.name}</h1>
                 <h3 className="text-lg">{currentWeather.condition.text}</h3>
@@ -132,7 +132,7 @@ export const CityWeather = () => {
                 </div>
               </div>
       
-              <div onClick={()=>{console.log(imageRef)}} className="flex justify-center">
+              <div className="flex justify-center items-center md:size-40">
                 <img 
                   ref={imageRef}
                   onLoad={() => {
@@ -143,11 +143,10 @@ export const CityWeather = () => {
                   }}
                   src={currentWeather.condition.icon.replace('64x64', '128x128')}
                   alt={currentWeather.condition.text} 
-                  className="size-40 hidden"
+                  className="size-24 md:size-40 hidden"
                 />
                 {!isMainWeatherImageLoaded && (
                   <PuffLoader 
-                    size={160}
                     color="#fafafa" 
                   />
                 )}

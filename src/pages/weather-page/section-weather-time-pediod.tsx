@@ -18,11 +18,11 @@ export const SectionWeatherTimePeriod = ({
   return (
     <>
       {forecastHour && (
-        <div className="grid grid-cols-4 gap-4 select-none md:w-4/6 xl:w-[450px]">
+        <div className="grid grid-cols-4 gap-4 select-none xl:w-[450px]">
         {hourOfDay.map((hourOfDay, index) => {
 
           return (
-            <div key={timeOfDay[index]} className="flex flex-col items-center gap-2">
+            <div key={timeOfDay[index]} className="flex flex-col items-center md:gap-2">
               <span>{timeOfDay[index]}</span>
                 <img 
                   src={forecastHour.hour[hourOfDay].condition.icon} 
