@@ -147,7 +147,10 @@ export const CityWeather = () => {
                   className="size-40 hidden"
                 />
                 {!isMainWeatherImageLoaded && (
-                  <PuffLoader size={160} />
+                  <PuffLoader 
+                    size={160}
+                    color="#fafafa" 
+                  />
                 )}
               </div>
             </div>
