@@ -1,7 +1,7 @@
 import { ArrowLeft, MoveUp, MoveDown, } from "lucide-react"
 import { Link, useParams } from "react-router-dom"
 import { api } from "../../lib/axios"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import PuffLoader from "react-spinners/PuffLoader"
 import { WeatherData } from "../../lib/weather-data"
 import { LocationInfo } from "../../lib/interfaces/location-info"
@@ -21,9 +21,12 @@ export const CityWeather = () => {
   
   const [ isMetric, setIsMetric ] = useState(true)
   const [ isDay, setIsDay ] = useState<boolean | null>(null)
+  const [ isMainWeatherImageLoaded , setIsMainWeatherImageLoaded ] = useState(false)
   
   const [ loading, setLoading ] = useState<boolean>(true)
   const { city } = useParams()
+
+  const imageRef = useRef<HTMLImageElement | null>(null)
 
   const formatTemp = (temp: number) => {
     return `${Math.round(temp)}°`
@@ -32,7 +35,7 @@ export const CityWeather = () => {
   const handleMeasurementUnit = () => {
     setIsMetric(!isMetric)
   }
-
+  
   useEffect(() => {
     if(isDay === false) {
       document.body.classList.add('dark')
@@ -130,12 +133,22 @@ export const CityWeather = () => {
                 </div>
               </div>
       
-              <div className="flex justify-center">
+              <div onClick={()=>{console.log(imageRef)}} className="flex justify-center">
                 <img 
+                  ref={imageRef}
+                  onLoad={() => {
+                    if(imageRef.current) {
+                      imageRef.current.classList.remove('hidden')
+                      setIsMainWeatherImageLoaded(true)
+                    }
+                  }}
                   src={currentWeather.condition.icon.replace('64x64', '128x128')}
                   alt={currentWeather.condition.text} 
-                  className="size-40"
+                  className="size-40 hidden"
                 />
+                {!isMainWeatherImageLoaded && (
+                  <PuffLoader size={160} />
+                )}
               </div>
             </div>
           ) : (
