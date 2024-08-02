@@ -73,17 +73,16 @@ export const CityWeather = () => {
   }, [city])  
 
   return (
-    <div onClick={()=>{console.log()}} className="h-screen font-extraligh text-zinc-950 bg-gradient-to-t from-sky-500 to-sky-300 dark:text-zinc-50 dark:from-slate-950 dark:to-blue-950">
+    <div onClick={()=>{console.log()}} className="flex flex-col items-center justify-between h-screen font-extraligh text-zinc-950 bg-gradient-to-t from-sky-500 to-sky-300 dark:text-zinc-50 dark:from-slate-950 dark:to-blue-950">
+      <div className="flex self-start md:self-auto md:w-80 xl:w-[450px]">
+        <button className="self-start p-3 duration-300 hover:scale-125">
+          <Link to={'/'}>
+            <ArrowLeft strokeWidth={1} className="size-12" />
+          </Link>
+        </button>
+      </div>
       {!loading ? (
-        <div className="flex flex-col items-center gap-12 p-2 lg:gap-16">
-          
-          <div className="md:w-4/6 xl:w-[450px]">
-            <button className="self-start duration-300 hover:scale-125">
-              <Link to={'/'}>
-                <ArrowLeft strokeWidth={1} className="size-12" />
-              </Link>
-            </button>
-          </div>
+        <div className="flex flex-col items-center justify-between flex-1 p-2">
     
           {currentWeather && locationInfo && forecastToday ? (
             <div data-testid='main-content' className="flex flex-col gap-4 select-none cursor-pointer">
