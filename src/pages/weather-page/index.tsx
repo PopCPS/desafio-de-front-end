@@ -87,20 +87,20 @@ export const CityWeather = () => {
           {currentWeather && locationInfo && forecastToday ? (
             <div data-testid='main-content' className="flex flex-col items-center gap-4 select-none cursor-pointer">
               <div className="flex flex-col items-center">
-                <h1 className="text-5xl">{locationInfo.name}</h1>
+                <h1 className="text-4xl md:text-5xl">{locationInfo.name}</h1>
                 <h3 className="text-lg">{currentWeather.condition.text}</h3>
               </div>
             
               <div onClick={handleMeasurementUnit} className="flex justify-center transition-transform duration-300 hover:scale-110">
-                <h2 className="text-9xl">
+                <h2 className="text-7xl md:text-9xl">
                   {isMetric ? (
                     Math.round(currentWeather.temp_c)
                   ) : (
                     Math.round(currentWeather.temp_f)
                   )}
                 </h2>
-                <div className="flex flex-col justify-between py-4">
-                  <div className="text-2xl w-fit self-end">
+                <div className="flex flex-col justify-between md:py-4">
+                  <div className="text-xl w-fit self-end md:text-2xl">
                     {isMetric ? (
                       '°C'
                     ) : (
@@ -110,7 +110,7 @@ export const CityWeather = () => {
                   <div>
                     <div className="flex justify-between items-center">
                       <MoveUp className="size-4 text-zinc-400 dark:text-zinc-500" />
-                      <span>
+                      <span className="text-sm">
                         {isMetric ? (
                           formatTemp(forecastToday.maxtemp_c)
                         ) : (
@@ -120,7 +120,7 @@ export const CityWeather = () => {
                     </div>
                     <div className="flex justify-between items-center">
                       <MoveDown className="size-4 text-zinc-400 dark:text-zinc-500" />
-                      <span>
+                      <span className="text-sm">
                         {isMetric ? (
                           formatTemp(forecastToday.mintemp_c)
                         ) : (
